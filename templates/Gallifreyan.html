@@ -1,1 +1,32 @@
+<style>
+.gallifreyanbg {
+  -webkit-filter: saturate(0%) brightness(400%) blur(4px);
+  -moz-filter: saturate(0%) brightness(400%) blur(4px);
+  -o-filter: saturate(0%) brightness(400%) blur(4px);
+  -ms-filter: saturate(0%) brightness(400%) blur(4px);
+  filter: saturate(0%) brightness(400%) blur(4px);
+}
+.gallifreyan {
+  -webkit-filter: brightness(70%);
+  -moz-filter: brightness(70%);
+  -o-filter: brightness(70%);
+  -ms-filter: brightness(70%);
+  filter: brightness(70%);
+}
+</style>
+<script>
+
+function checkSolution(element) {
+  guess = element.value;
+  correct = element.getAttribute("data:word");
+  if (guess == correct) {
+    $( '.input-append' ).show();
+    $( '#gallifreyan-answer' ).hide();
+  }
+}
+
+</script>
+<div class="input-append" id="gallifreyan-answer" >
+  <input class="i18n input-block-level inputPassword checkAutocomplete" name="GallifreyanWord" id="GallifreyanWord" style="padding-right: 35px;" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Gallifreyan Word" data:word="" onkeyup="checkSolution(this)"/>
+</div>
 <div style="display: block; position: relative; left: 0; top: 0;"><div id="gallifreyan-div" style="display: none;"></div></div>
