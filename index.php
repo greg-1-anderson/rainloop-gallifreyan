@@ -39,7 +39,12 @@ class GallifreyanPlugin extends \RainLoop\Plugins\AbstractPlugin
 	public function configMapping()
 	{
 		// No preferences for now.
-		return array();
+		return array(
+			\RainLoop\Plugins\Property::NewInstance('quiz')->SetLabel('Require solving word prior to login')
+				->SetType(\RainLoop\Enumerations\PluginPropertyType::BOOL)
+				->SetAllowedInJs(true)
+				->SetDefaultValue(true),
+		);
 	}
 
 	/**

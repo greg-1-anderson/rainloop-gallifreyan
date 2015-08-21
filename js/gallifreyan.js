@@ -7,6 +7,7 @@
 			var
         path = window.rl.pluginSettingsGet('gallifreyan', 'path')
         word = window.rl.pluginSettingsGet('gallifreyan', 'word')
+        quiz = window.rl.pluginSettingsGet('gallifreyan', 'quiz')
 			;
 
       function gallifreyanHtml(imgUrl) {
@@ -16,7 +17,6 @@
       }
 
       function addGallifreyanWord() {
-
         imgUrl = path + '/' + word + '.png';
 
         // Display the same image twice -- once in the
@@ -29,11 +29,19 @@
         // until after the animation is complete.
         $( "#gallifreyan-div" ).show();
 
-        // You don't get to see your login form until
-        // you answer the Gallifreyan quiz.
-        $( ".input-append" ).hide();
-        $( "#gallifreyan-answer" ).show();
+        // In "quiz" mode, you don't get to see your login
+        // form until you answer the Gallifreyan quiz.
+        // Also, the "Remember me" checkbox would allow a user
+        // to bypass the quiz, so we will hide that as well
+        // when in quiz mode.
+        if (quiz) {
+          $( ".input-append" ).hide();
+          $( ".signMeLabel" ).hide();
+          $( "#gallifreyan-answer" ).show();
+        }
 
+        // Make the Gallifreyan word available to the
+        // JavaScript function in the Gallifreyan template.
         $( "#GallifreyanWord" ).attr("data:word", word);
       }
 
